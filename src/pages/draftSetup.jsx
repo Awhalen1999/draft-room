@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { MdOutlineRemoveCircleOutline } from 'react-icons/md';
 
 const DraftSetup = () => {
   const [allPlayers, setAllPlayers] = useState([]);
@@ -104,7 +105,7 @@ const DraftSetup = () => {
                   {player.Position})
                 </span>
               </div>
-              <div className=''>
+              <div className='flex items-center'>
                 <button
                   onClick={() => movePlayer(index, -1)}
                   disabled={index === 0}
@@ -117,6 +118,9 @@ const DraftSetup = () => {
                   disabled={index === draftBoard.length - 1}
                 >
                   Down
+                </button>
+                <button className='ml-2 text-error'>
+                  <MdOutlineRemoveCircleOutline size={22} />
                 </button>
               </div>
             </li>
