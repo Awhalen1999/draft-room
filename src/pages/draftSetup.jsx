@@ -13,7 +13,8 @@ const DraftSetup = () => {
     setSelectedSport(event.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     console.log({
       draftName,
       selectedSport,
@@ -25,7 +26,10 @@ const DraftSetup = () => {
   };
 
   return (
-    <div className='flex justify-center items-center min-h-full'>
+    <form
+      onSubmit={handleSubmit}
+      className='flex justify-center items-center min-h-full'
+    >
       <div className='p-10 w-full sm:w-full md:w-3/4 lg:w-1/2'>
         <h2 className='text-2xl font-bold mb-6 text-center'>
           Setup Your Draft
@@ -41,6 +45,7 @@ const DraftSetup = () => {
             value={draftName}
             onChange={(e) => setDraftName(e.target.value)}
             className='input input-bordered input-primary w-full'
+            required
           />
         </div>
 
@@ -52,6 +57,7 @@ const DraftSetup = () => {
             className='select select-primary w-full'
             value={selectedSport}
             onChange={handleSelectChange}
+            required
           >
             <option disabled value=''>
               Select a sport
@@ -72,6 +78,7 @@ const DraftSetup = () => {
             value={rounds}
             onChange={(e) => setRounds(e.target.value)}
             className='input input-bordered input-primary w-full'
+            required
           />
         </div>
 
@@ -114,13 +121,13 @@ const DraftSetup = () => {
         </div>
 
         <button
-          onClick={handleSubmit}
+          type='submit'
           className='btn btn-primary btn-block text-white shadow-sm'
         >
           Continue
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 
